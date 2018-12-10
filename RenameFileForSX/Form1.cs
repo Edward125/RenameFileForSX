@@ -98,8 +98,19 @@ namespace RenameFileForSX
                 string newname = string.Empty;
                 if (item.FileName.ToLower().Trim().Contains("file"))
                 {
-                    string[] temp = item.FilePath.Split('\\');
-                    newname = temp[temp.Length - 3] + "@" + temp[temp.Length - 2] + "_" + item.FileName.ToUpper().Replace("FILE", "");
+                    try
+                    {
+                        string[] temp = item.FilePath.Split('\\');
+                        newname = temp[temp.Length - 3] + "@" + temp[temp.Length - 2] + "_" + item.FileName.ToLower() .Replace("file", "");
+                    }
+                    catch (Exception ex)
+                    {
+
+                        WriteLog(item.FilePath + " 文件名异常");
+                    }
+
+
+
                   //  File.Move(item.FilePath, item.FileDirectory + @"\" + newname);
                 }
                 //
@@ -108,8 +119,17 @@ namespace RenameFileForSX
                     string[] tempfile = item.FileName.Replace(item.FileExtension, "").Split('_');
                     if (tempfile.Length == 5)    //H_20170817013502_CT00000_123456_0001
                     {
-                        string[] temp = item.FilePath.Split('\\');
-                        newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+                        try
+                        {
+                            string[] temp = item.FilePath.Split('\\');
+                            newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+                        }
+                        catch (Exception ex)
+                        {
+                            
+                           WriteLog(item.FilePath + " 文件名异常");
+                        }
+               
                         // File.Move(item.FilePath, item.FileDirectory + @"\" + newname);
 
                     }
@@ -119,15 +139,33 @@ namespace RenameFileForSX
 
                         if (tempfile[tempfile.Length - 1].Length == 5) //8176162_20180513043852_00011
                         {
-                            string[] temp = item.FilePath.Split('\\');
-                            newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1].Substring(1, 4) + item.FileExtension;
+                            try
+                            {
+                                string[] temp = item.FilePath.Split('\\');
+                                newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1].Substring(1, 4) + item.FileExtension;
+                            }
+                            catch (Exception)
+                            {
+                                
+                               WriteLog(item.FilePath + " 文件名异常");
+                            }
+                         
 
                         }
 
                         if (tempfile[tempfile.Length - 1].Length == 4)    //J800000_00000020170730100947_0016
                         {
-                            string[] temp = item.FilePath.Split('\\');
-                            newname = temp[temp.Length - 3] + "@" + tempfile[1].Substring(6, 14) + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+                            try
+                            {
+                                string[] temp = item.FilePath.Split('\\');
+                                newname = temp[temp.Length - 3] + "@" + tempfile[1].Substring(6, 14) + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+                            }
+                            catch (Exception)
+                            {
+
+                                WriteLog(item.FilePath + " 文件名异常");
+                            }
+           
 
                         }
 
@@ -197,6 +235,24 @@ namespace RenameFileForSX
         }
         #endregion
 
+        public static void WriteLog(string log)
+        {
+            string logfile = Application.StartupPath  + @"\HA_" + DateTime.Now.ToString("yyyyMMdd") + ".log";
+            try
+            {
+                StreamWriter sw = new StreamWriter(logfile, true);
+                log = DateTime.Now.ToString("HH:mm:ss") + "->" + log;
+                sw.WriteLine(log);
+                sw.Close();
+            }
+            catch (Exception)
+            {
+
+                //throw;
+            }
+
+
+        }
 
 
 

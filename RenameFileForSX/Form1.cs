@@ -139,31 +139,62 @@ namespace RenameFileForSX
 
                         if (tempfile[tempfile.Length - 1].Length == 5) //8176162_20180513043852_00011
                         {
-                            try
-                            {
-                                string[] temp = item.FilePath.Split('\\');
-                                newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1].Substring(1, 4) + item.FileExtension;
-                            }
-                            catch (Exception)
-                            {
-                                
-                               WriteLog(item.FilePath + " 文件名异常");
-                            }
-                         
+
+                
+
+                                try
+                                {
+                                    string[] temp = item.FilePath.Split('\\');
+                                    newname = temp[temp.Length - 3] + "@" + tempfile[1] + "_" + tempfile[tempfile.Length - 1].Substring(1, 4) + item.FileExtension;
+                                }
+                                catch (Exception)
+                                {
+
+                                    WriteLog(item.FilePath + " 文件名异常");
+                                }
+
+  
+
+
+
 
                         }
 
                         if (tempfile[tempfile.Length - 1].Length == 4)    //J800000_00000020170730100947_0016
                         {
-                            try
-                            {
-                                string[] temp = item.FilePath.Split('\\');
-                                newname = temp[temp.Length - 3] + "@" + tempfile[1].Substring(6, 14) + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
-                            }
-                            catch (Exception)
+
+                            if (tempfile[1].ToLower().StartsWith("hda")) //20181210173000_HDA00N_0011
                             {
 
-                                WriteLog(item.FilePath + " 文件名异常");
+                                try
+                                {
+                                    string[] temp = item.FilePath.Split('\\');
+                                    newname = temp[temp.Length - 3] + "@" + tempfile[0] + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+
+                                   // MessageBox.Show(newname);
+                                }
+                                catch (Exception)
+                                {
+
+                                    WriteLog(item.FilePath + " 文件名异常");
+                                }
+                   
+
+                            }
+                            else
+                            {
+
+
+                                try
+                                {
+                                    string[] temp = item.FilePath.Split('\\');
+                                    newname = temp[temp.Length - 3] + "@" + tempfile[1].Substring(6, 14) + "_" + tempfile[tempfile.Length - 1] + item.FileExtension;
+                                }
+                                catch (Exception)
+                                {
+
+                                    WriteLog(item.FilePath + " 文件名异常");
+                                }
                             }
            
 

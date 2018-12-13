@@ -29,9 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.txtFolder = new System.Windows.Forms.TextBox();
-            this.btnStart = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
+            this.txtFolder = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lstInfo = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
@@ -49,13 +49,14 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
-            // txtFolder
+            // label1
             // 
-            this.txtFolder.Location = new System.Drawing.Point(78, 18);
-            this.txtFolder.Name = "txtFolder";
-            this.txtFolder.Size = new System.Drawing.Size(306, 21);
-            this.txtFolder.TabIndex = 0;
-            this.txtFolder.DoubleClick += new System.EventHandler(this.txtFolder_DoubleClick);
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 23);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "文件夹地址";
             // 
             // btnStart
             // 
@@ -67,14 +68,13 @@
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // label1
+            // txtFolder
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 23);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(65, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "文件夹地址";
+            this.txtFolder.Location = new System.Drawing.Point(78, 18);
+            this.txtFolder.Name = "txtFolder";
+            this.txtFolder.Size = new System.Drawing.Size(306, 21);
+            this.txtFolder.TabIndex = 0;
+            this.txtFolder.DoubleClick += new System.EventHandler(this.txtFolder_DoubleClick);
             // 
             // groupBox2
             // 
@@ -101,6 +101,8 @@
             this.ClientSize = new System.Drawing.Size(542, 547);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);

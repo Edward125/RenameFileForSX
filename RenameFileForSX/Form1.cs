@@ -163,7 +163,7 @@ namespace RenameFileForSX
                         if (tempfile[tempfile.Length - 1].Length == 4)    //J800000_00000020170730100947_0016
                         {
 
-                            if (tempfile[1].ToLower().StartsWith("hda")) //20181210173000_HDA00N_0011
+                            if (tempfile[1].ToLower().StartsWith("hda") | tempfile[1].ToLower().StartsWith ("a")) //20181210173000_HDA00N_0011  20181210173000_A0001N_0011
                             {
 
                                 try
